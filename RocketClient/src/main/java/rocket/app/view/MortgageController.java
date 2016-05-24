@@ -1,15 +1,30 @@
 package rocket.app.view;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import eNums.eAction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import rocket.app.MainApp;
 import rocketCode.Action;
 import rocketData.LoanRequest;
 
-public class MortgageController {
+public class MortgageController implements Initializable {
 
 	private MainApp mainApp;
+	
+	@FXML
+	public TextField txIncome;
+	public TextField txExpenses;
+	public TextField txCreditScore;
+	public TextField txHouseCost;
+	public ComboBox loanterm;
+	public Button loanPayment;
 	
 	//	TODO - RocketClient.RocketMainController
 	
@@ -38,6 +53,7 @@ public class MortgageController {
 		
 		Action a = new Action(eAction.CalculatePayment);
 		LoanRequest lq = new LoanRequest();
+		
 		//	TODO - RocketClient.RocketMainController
 		//			set the loan request details...  rate, term, amount, credit score, downpayment
 		//			I've created you an instance of lq...  execute the setters in lq
@@ -55,6 +71,13 @@ public class MortgageController {
 		//			after it's returned back from the server, the payment (dPayment)
 		//			should be calculated.
 		//			Display dPayment on the form, rounded to two decimal places
+		
+	}
+
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
 		
 	}
 }

@@ -23,6 +23,18 @@ public class RocketHub extends Hub {
 			resetOutput();
 			
 			LoanRequest lq = (LoanRequest) message;
+			try{
+				_RateBLL.getRate(lq.getiCreditScore());
+				double lqRate = _RateBLL.getRate(lq.getiCreditScore());
+				lq.setdRate(lqRate);
+			}
+			catch (Exception e){
+			e.printStackTrace();
+			}
+			
+			double lqPayment = _RateBLL.getPayment(lq.getdRate(), lq.getiTerm(), lq.getdAmount(), 0, true);
+			lq.setdPayment(lqPayment);
+			
 			
 			//	TODO - RocketHub.messageReceived
 
